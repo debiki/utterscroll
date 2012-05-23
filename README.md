@@ -1,12 +1,15 @@
 Utterscroll
 ===========
 
-Enables dragscroll on your website. It automatically detects when you want to select text, rather than scroll.
+Enables dragscroll on your website. It automatically detects when you
+want to select text, rather than scroll.
 
-Please find a [DEMO, HERE](http://www.debiki.com/dev/-31nc3-utterscroll), 
-together with more information on Utterscroll. 
+Please find a [DEMO, here][demo], together with more information on
+Utterscroll. 
 
-You could ask questions or make suggestions by clicking *Leave a comment* at the bottom of that page (i.e. the demo page). (Or via GitHub.)
+You could ask questions or make suggestions by clicking *Leave a
+comment* at the bottom of that page (i.e. the demo page). (Or via
+GitHub.)
 
 
 Instructions
@@ -18,32 +21,36 @@ Use like so: (for example)
 
     <script src='jquery-scrollable.js'></script>
     <script src='debiki-utterscroll.js'></script>
- 
+
     if (!Modernizr.touch)  // if not a smartphone
       debiki.Utterscroll.enable({
           scrollstoppers: '.CodeMirror, .ui-resizable-handle' });
 
-Utterscroll is disabled inside the `scrollstoppers`. (It automatically 
-understands to disable itself when you click buttons or select text, so 
-you probably don't need to configure many special scrollstoppers.)
+Utterscroll is disabled inside the `scrollstoppers`. (It automatically
+understands to disable itself when you click buttons or select text,
+so you probably don't need to configure many special scrollstoppers.)
 
 
 Details
 ---------
 
 Utterscroll scrolls the closest scrollable element, or the window.
-However, scrolling anything but the window, depends on a jQuery selector,
-':scrollable', being available. Otherwise, the window is always scrolled.
-So you should also include the file `jquery.scrollable.js` on your web page 
-(it defines the ':scrollable' selector).  That file is an excerpt from
-[this scroll-into-view GitHub project](https://github.com/litera/jquery-scrollintoview/blob/master/jquery.scrollintoview.js)
+However, scrolling anything but the window, depends on a jQuery
+selector, ':scrollable', being available. Otherwise, the window is
+always scrolled.  So you should also include the file
+`jquery.scrollable.js` on your web page (it defines the ':scrollable'
+selector).  That file is an excerpt from
+[jquery-scrollintoview](https://github.com/litera/jquery-scrollintoview/blob/master/jquery.scrollintoview.js)
+by Robert Koritnik.
 
-As of 2012-05-23, tested with jQuery 1.7.2 and recent versions of Chrome, FF, IE and Opera.
 
-As of 2012-02-29, tested with jQuery 1.6.4 and recent versions
-of Google Chrome, Firefox and Opera, and IE 6, 7, 8 and 9.
-(Scrolling the window has been tested; scrolling other elems has not
-been very thoroughly tested.)
+As of 2012-05-23, tested with jQuery 1.7.2 and recent versions of
+Chrome, FF, IE and Opera.
+
+As of 2012-02-29, tested with jQuery 1.6.4 and recent versions of
+Google Chrome, Firefox and Opera, and IE 6, 7, 8 and 9.  (Scrolling
+the window has been tested; scrolling other elems has not been very
+thoroughly tested.)
 
 
 License and Copyright
@@ -54,4 +61,8 @@ Copyright (c) 2012 Kaj Magnus Lindberg
 Licensed under the GNU Lesser General Public License version 3,
 or any later version:
   http://www.gnu.org/licenses/lgpl.txt
+
+
+
+[demo]: http://www.debiki.com/dev/-31nc3-utterscroll
 
