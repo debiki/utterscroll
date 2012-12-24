@@ -58,11 +58,9 @@ License and Copyright
 
 Copyright (c) 2012 Kaj Magnus Lindberg
 
-Licensed under the GNU Lesser General Public License version 3,
-or any later version:
-  http://www.gnu.org/licenses/lgpl.txt
-
-
+Licensed under the GNU Lesser General Public License version 2.1, or
+(at your option) any later version.  See the top of debiki-utterscroll.js
+and lgpl-2.1.txt and lgpl-3.0.txt and http://www.gnu.org/licenses/.
 
 [demo]: http://www.debiki.com/dev/-31nc3-utterscroll
 
