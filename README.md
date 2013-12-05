@@ -30,6 +30,12 @@ Utterscroll is disabled inside the `scrollstoppers`. (It automatically
 understands to disable itself when you click buttons or select text,
 so you probably don't need to configure many special scrollstoppers.)
 
+Please find in `utterscroll-example.html` a complete example HTML file, live here:
+http://rawgithub.com/debiki/utterscroll/master/utterscroll-example.html.
+Please have a look in that file — there are some things to think about:
+you currently need to load Utterscroll at the bottom of the HTML page,
+and you cannot use Utterscroll before the jQuery onload event has happened.
+
 
 Details
 ---------
