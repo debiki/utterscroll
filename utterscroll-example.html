@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src='http://modernizr.com/downloads/modernizr-latest.js'></script>
+  <script src='https://rawgithub.com/debiki/utterscroll/master/jquery-scrollable.js'></script>
+  <script type="text/javascript">
+    jQuery(function($) {
+      if (!Modernizr.touch) { // if not a smartphone
+        debiki.Utterscroll.enable();
+      }
+    });
+  </script>
+</head>
+<body style="width:2000px; height:2000px; background-color:lightgray">
+
+<p>This is not a test, this is for real.</p>
+<div style="width:500px; height:400px; background-color: blue; position:relative; left:250px"></div>
+<div style="width:300px; height:400px; background-color: green"></div>
+<div style="width:600px; height:100px; background-color: red; position:relative; left:350px"></div>
+<div style="width:1200px; height:600px; background-color: blue; position:relative; left:700px"></div>
+<div style="width:700px; height:700px; background-color: green"></div>
+<div style="width:600px; height:100px; background-color: red; position:relative; left:550px"></div>
+<p>This is the bottom of the page.</p>
+
+<script src='https://rawgithub.com/debiki/utterscroll/master/debiki-utterscroll.js'></script>
+</body>
+</html>
+
