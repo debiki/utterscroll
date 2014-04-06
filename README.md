@@ -37,6 +37,16 @@ you currently need to load Utterscroll at the bottom of the HTML page,
 and you cannot use Utterscroll before the jQuery onload event has happened.
 
 
+Nested Scrollbars Issue with Firefox
+---------
+
+Utterscroll works in nested scrollbars, however, if the wrapping element
+doesn't have `position: relative` or `absolute`, the nested scrollbars
+seems to be broken in Firefox. Have a look at the demo (link above, to
+utterscroll-example.html) — in the demo, I've set `position: relative`
+on the wrapping element, so it should work in Firefox.
+
+
 Details
 ---------
 

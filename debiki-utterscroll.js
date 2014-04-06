@@ -133,6 +133,7 @@ debiki.Utterscroll = (function(options) {
     // (What about overflow === 'inherit'? Would anyone ever use that?)
     if ($target.css('overflow') === 'auto' ||
         $target.css('overflow') === 'scroll') {
+
       // Okay, scrollbars might have been clicked, in Chrome.
       var $ghost = $('<div style="width: 100%; height: 100%; ' +
           'position: absolute;"></div>');
@@ -140,7 +141,9 @@ debiki.Utterscroll = (function(options) {
       // $target, even if $target contains scrollbars that have been scrolled.
       $ghost.css({ top: $target.scrollTop(), left: $target.scrollLeft() });
       var targetPosOrig = $target.css('position');
-      $target.css('position', 'relative');
+      if (targetPosOrig === 'static') {
+        $target.css('position', 'relative');
+      }
       $target.prepend($ghost)
       // Now $ghost fills up $target, up to the scrollbars.
       // Check if the click happened outside $ghost.
@@ -149,8 +152,20 @@ debiki.Utterscroll = (function(options) {
         isScrollbar = true; // vertical scrollbar clicked, don't dragscroll
       if (event.pageY > $ghost.offset().top + $ghost.height())
         isScrollbar = true; // horizontal scrollbar clicked
+
+      if (targetPosOrig === 'static') {
+        // Avoid doing this, because it breaks nested scollbars in Firefox —
+        // they become disabled somehow, when resetting the 'position'.
+        // By avoiding doing this, it's possible to work around that issue, by
+        // setting 'position:relative' on the elem with scrollbars.
+        $target.css('position', targetPosOrig);
+        debug('Consider using "position: relative" for element #' +
+            ($target[0].id ? $target[0].id : '?')  + ', which has ' +
+            'scrollbars, because otherwise the scrollbars might not work ' +
+            'in Firefox in combination with Utterscroll.');
+      }
+
       $ghost.remove();
-      $target.css('position', targetPosOrig);
       if (isScrollbar)
         return;
     }
