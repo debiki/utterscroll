@@ -105,12 +105,19 @@ debiki.Utterscroll = (function(options) {
     // than the viewport, so checking that the mousedown
     // didn't happen inside the <html> elem won't work. We need
     // $viewportGhost, which always covers the whole viewport.
-    if (event.pageX > $viewportGhost.offset().left + $viewportGhost.width()) {
+    var ghostOffset = $viewportGhost.offset();
+    if (!ghostOffset) {
+      // Cancel, since Utterscroll is not yet inited.
+      // I'm surprised that this can happen, since $viewportGhost has already
+      // been appended to document.body. Nevertheless this did happen, in Firefox.
+      return;
+    }
+    if (event.pageX > ghostOffset.left + $viewportGhost.width()) {
       // Vertical scrollbar mousedown:ed.
       settings.onMousedownOnWinVtclScrollbar();
       return;
     }
-    if (event.pageY > $viewportGhost.offset().top + $viewportGhost.height()) {
+    if (event.pageY > ghostOffset.top + $viewportGhost.height()) {
       // Horizontal scrollbar mousedown:ed.
       settings.onMousedownOnWinHztlScrollbar();
       return;
