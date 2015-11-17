@@ -417,7 +417,7 @@ debiki.Utterscroll = (function(options) {
     // slowly (unbearably slowly if there're lots of SVG arrows!) and
     // the reported mouse movement distances would becom terribly huge,
     // e.g. 1000px, and then the viewport jumps randomly.
-    var mul;
+    /* var mul;
     if (distTotal.x > 9){
       mul = Math.log((distTotal.x - 9) / 3);
       if (mul > 1.7 && $.browser && $.browser.opera) mul = 1.7;  // see comment above
@@ -429,7 +429,6 @@ debiki.Utterscroll = (function(options) {
       if (mul > 1) distNow.y *= mul;
     }
 
-    /*
     debug(
       ' clnt: '+ event.clientX +', '+ event.clientY +
       ' strt: '+ startPos.x +', '+ startPos.y +
