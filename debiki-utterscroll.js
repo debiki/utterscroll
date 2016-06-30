@@ -33,6 +33,11 @@ if (!debiki.Utterscroll) debiki.Utterscroll = {};
  *  scrollstoppers:
  *    jQuery selectors, e.g. '.CodeMirror, div.your-class'.
  *    Dragging the mouse inside a scrollstopper never results in scrolling.
+ *  selector:
+ *    jQuery selector for scroll zones
+ *    Scrolling will use the specified selector when determining the scrolling context instead of :scrollable
+ *    Note: This option will disable the fallback to the window
+ *    Note: This option can be used to expand functionality in the absence of the :scrollable selector by applying the selected class to the all scrollable elements manually.
  *
  * `enable()` (with no options specified) enables Utterscroll and remembers
  *   any option you specified the last time you did specify options.
@@ -63,6 +68,7 @@ debiki.Utterscroll = (function(options) {
   var enabled;
   var settings;
   var allScrollstoppers;
+  var selector;
 
   var $elemToScroll;
   var startPos;
@@ -174,9 +180,14 @@ debiki.Utterscroll = (function(options) {
     // If the ':scrollable' selector isn't available, scroll the window.
     // Also don't scroll `html' and `body' — scroll `window' instead, that
     // works better across all browsers.
-    $elemToScroll = $.expr[':'].scrollable ?
+    if(selector){
+      $elemToScroll =  $target.closest(selector);
+    }
+    else {
+      $elemToScroll = $.expr[':'].scrollable ?
         $target.closest(':scrollable:not(html, body)').add($(window)).first() :
         $(window);
+    }
 
 
     // Scroll, unless the mouse down is a text selection attempt:
@@ -464,7 +475,7 @@ debiki.Utterscroll = (function(options) {
   var api = {
     enable: function(options) {
       enabled = true;
-
+      selector = options.selector;
       // If no options specified, remember any options specified last time
       // Utterscroll was enabled.
       if (!options && settings)
